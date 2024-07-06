@@ -43,6 +43,6 @@ void main() {
         }    
     } 
 
-    printf("\n The number of Page Faults using FIFO are %d", PF);
-    printf("\n The number of Page Hits using FIFO are %d", PH);
+    printf("\n The number of Page Faults using LRU are %d", PF);
+    printf("\n The number of Page Hits using LRU are %d", PH);
 }
