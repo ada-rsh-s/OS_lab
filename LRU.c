@@ -24,25 +24,20 @@ void main() {
         for(k = 0; k < frame_length; k++) { 
             if(frames[k] == ref_str[i]) 
                 break; 
-        }   
-        if(k == frame_length) { 
-           for(int j = frame_length-2; j >=0; j--){
-               frames[j+1]=frames[j];                
-           } 
-           frames[0]=ref_str[i];
-           for(int j = 0; j < frame_length; j++)
-            printf("\t%d", frames[j]); 
+        }  
 
+        for(int j = frame_length-2; j >=0; j--){
+            frames[j+1]=frames[j];                
+        } 
+
+        frames[0]=ref_str[i];
+        for(int j = 0; j < frame_length; j++)
+         printf("\t%d", frames[j]); 
+
+        if(k == frame_length) { 
            PF++; 
            printf("\tPF No. %d\n", PF); 
         } else {
-           for(int j = frame_length-2; j >=0; j--){
-               frames[j+1]=frames[j];                
-           } 
-           frames[0]=ref_str[i];
-           for(int j = 0; j < frame_length; j++)
-            printf("\t%d", frames[j]); 
-        
            PH++; 
            printf("\tPH No. %d\n", PH);  
         }    
