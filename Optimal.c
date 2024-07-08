@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int i, j, k, ref_str[20], frames[20], flag[20] = {0}, ref_length, frame_length, PF = 0, PH = 0;
+    int i, j, k, ref_str[20], frames[20],ref_length, frame_length, PF = 0, PH = 0;
 
     printf("Enter the length of the reference string: ");
     scanf("%d", &ref_length);
@@ -24,7 +24,6 @@ int main() {
         for (j = 0; j < frame_length; j++) {
             if (ref_str[i] == frames[j]) {
                 found = 1;
-                flag[i] = 1; // Page hit
                 PH++;
                 break;
             }
@@ -56,7 +55,7 @@ int main() {
         for (j = 0; j < frame_length; j++) 
            printf("\t%d", frames[j]);
 
-        if (flag[i] == 1) printf("\tPH No. %d\n", PH);
+        if (found) printf("\tPH No. %d\n", PH);
         else printf("\tPF No. %d\n", PF);
     }
  printf("\nThe number of page faults using Optimal algorithm: %d\n", PF);

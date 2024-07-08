@@ -50,6 +50,4 @@ int main(){
     avg_wt/=no_process; 
     printf("\nAverage waiting time : %f",avg_wt);
     printf("\nAverage turnaround time : %f",avg_tat);
-
-
 }
