@@ -1,48 +1,39 @@
-#include<stdio.h> 
+#include <stdio.h>
 
-void main() {
-    int k,PF = 0,PH = 0,ref_str[25],frames[10],ref_length,frame_length; 
+int main() {
+    int i, j, k, ref_str[10], frames[10], flag[25] = {0}, ref_length, frame_length, page_fault = 0;
+    
+    printf("Enter the length of the reference string: ");
+    scanf("%d", &n);
 
-    printf("\n Enter the length of reference string -- "); 
-    scanf("%d", &ref_length); 
-
-    printf("\n Enter the reference string -- "); 
-    for(int i = 0; i < ref_length; i++) 
-        scanf("%d", &ref_str[i]); 
-
-    printf("\n Enter no. of frames -- "); 
-    scanf("%d", &frame_length); 
-
-    for(int i = 0; i <frame_length; i++) 
-    {
-        frames[i] = -1;
+    printf("Enter the reference string: ");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &rs[i]);
     }
-        
-    printf("\n The Page Replacement Process is \n");
 
-    for(int i = 0; i < ref_length; i++) { 
-        for(k = 0; k < frame_length; k++) { 
-            if(frames[k] == ref_str[i]) 
-                break; 
-        }  
+    printf("Enter the number of frames: ");
+    scanf("%d", &f);
 
-        for(int j = frame_length-2; j >=0; j--){
-            frames[j+1]=frames[j];                
-        } 
+    printf("\nThe Page Replacement process is \n");
+    for(i = 0; i < ref_length; i++){
+        for(j = 0; j < frame_length; j++){
+            if(ref_str[i] == frames[j]){
+                
+                flag[i] = 1;
+                break;
+            }
+        }
 
-        frames[0]=ref_str[i];
-        for(int j = 0; j < frame_length; j++)
-         printf("\t%d", frames[j]); 
+        if(flag[i] == 0){
+          int replace,farthest = i+1;
 
-        if(k == frame_length) { 
-           PF++; 
-           printf("\tPF No. %d\n", PF); 
-        } else {
-           PH++; 
-           printf("\tPH No. %d\n", PH);  
-        }    
-    } 
-
-    printf("\n The number of Page Faults using LRU are %d", PF);
-    printf("\n The number of Page Hits using LRU are %d", PH);
+          for(j = 0; j < frame_length; j++){
+             for(k = farthest; k < ref_length; k++){
+               if(frames[i] == ref_str[j]){
+                 break;
+               }
+             }
+          }
+        }
+    }
 }
