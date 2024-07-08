@@ -1,7 +1,7 @@
 // #include<stdio.h> 
 
 // void main() {
-//     int k,PF = 0,PH = 0,ref_str[210],frames[10],ref_length,frame_length; 
+//     int k,PF = 0,PH = 0,ref_str[20],frames[20],ref_length,frame_length; 
 
 //     printf("\n Enter the length of reference string -- "); 
 //     scanf("%d", &ref_length); 
@@ -24,22 +24,29 @@
 //             if(frames[k] == ref_str[i]) 
 //                 break; 
 //         }  
+                
+//         if (k == frame_length) { 
+//             for (int j = frame_length - 1; j >= 0; j--) {
+//                 frames[j] = frames[j - 1];
+//             }
+//             frames[0] = ref_str[i];
+//             for (int j = 0; j < frame_length; j++) {
+//                 printf("\t%d", frames[j]);
+//             }       
+//             PF++;
+//             printf("\tPF No. %d\n", PF);
+//         } else { 
+//             for (int j = 0; j < frame_length; j++) {
+//                 printf("\t%d", frames[j]);
+//             }
+//             for (int j = frame_length - 1; j >= 0; j--) {
+//                 frames[j] = frames[j - 1];
+//             }
+//             frames[0] = ref_str[i];
+//             PH++;
+//             printf("\tPH No. %d\n", PH);
+//         }
 
-//         for(int j = frame_length-2; j >=0; j--){
-//             frames[j+1]=frames[j];                
-//         } 
-
-//         frames[0]=ref_str[i];
-//         for(int j = 0; j < frame_length; j++)
-//          printf("\t%d", frames[j]); 
-
-//         if(k == frame_length) { 
-//            PF++; 
-//            printf("\tPF No. %d\n", PF); 
-//         } else {
-//            PH++; 
-//            printf("\tPH No. %d\n", PH);  
-//         }    
 //     } 
 
 //     printf("\n The number of Page Faults using LRU are %d", PF);
@@ -50,7 +57,7 @@
 #include<stdio.h> 
 
 void main() {
-    int i,j,k,PF = 0,PH = 0,ref_str[10],frames[10],ref_length,frame_length; 
+    int i,j,k,PF = 0,PH = 0,ref_str[20],frames[20],ref_length,frame_length; 
 
     printf("\n Enter the length of reference string -- "); 
     scanf("%d", &ref_length); 
@@ -80,15 +87,20 @@ void main() {
         }  
 
         if(flag[i]==0){
-
+            if(i<frame_length){
+                frames[i]=ref_str[i];
+                count[i]=next;
+                next++;                
+            }else{
+                
+            }
+            PF++;
         }
-        PF++;
 
         for(int j = 0; j < frame_length; j++)
           printf("\t%d", frames[j]); 
         
-        printf("\tPH No. %d\n", PH);  
-        printf("\tPF No. %d\n", PF); 
-
+        if(flag[i]==1) printf("\tPH No. %d\n", PH)
+        else printf("\tPF No. %d\n", PF);
     }
 }
