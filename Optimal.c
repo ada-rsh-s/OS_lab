@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int i, j, k, ref_str[20], frames[20],ref_length, frame_length, PF = 0, PH = 0;
+    int i, j, k, ref_str[20], frames[20],ref_length, frame_length, PF = 0, PH = 0,count=0;
 
     printf("Enter the length of the reference string: ");
     scanf("%d", &ref_length);
@@ -31,6 +31,9 @@ int main() {
 
         if (!found) {
             int replace = -1, farthest = -1;
+             if(i<frame_length){
+            replace=count;
+            count++;}else{
             for (j = 0; j < frame_length; j++) {
                 int next_use = -1;
                 for (k = i + 1; k < ref_length; k++) {
@@ -48,6 +51,7 @@ int main() {
                     replace = j;
                 }
             }
+        }
             frames[replace] = ref_str[i];
             PF++;
         }
